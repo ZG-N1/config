@@ -57,7 +57,7 @@ for type, icon in pairs(signs) do
 end
 
 -- configure R server
-lspconfig["r-languageserver"].setup({
+lspconfig["r_language_server"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })

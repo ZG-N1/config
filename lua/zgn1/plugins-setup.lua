@@ -48,14 +48,14 @@ return packer.startup(function(use)
 	use("nvim-tree/nvim-tree.lua")
 
 	-- icons
-	use("kyazdani42/nvim-web-devicons")
+	use("nvim-tree/nvim-web-devicons")
 
 	-- statusline
 	use("nvim-lualine/lualine.nvim")
 
 	-- fuzzy finding
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-	use({ "nvim-telescopetelescope.nvim", branch = "0.1.x" })
+	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })
 
 	-- autocompletion
 	use("hrsh7th/nvim-cmp") -- completion plugin
