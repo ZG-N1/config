@@ -32,6 +32,7 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim")
 
 	use("bluz71/vim-nightfly-guicolors")
+	-- use("morhetz/gruvbox")
 
 	-- tmux & split window navigation
 	use("christoomey/vim-tmux-navigator")
@@ -52,6 +53,12 @@ return packer.startup(function(use)
 
 	-- statusline
 	use("nvim-lualine/lualine.nvim")
+
+	-- tabline
+	use({
+		"alvarosevilla95/luatab.nvim",
+		require = "nvim-tree/nvim-web-devicons",
+	})
 
 	-- fuzzy finding
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
@@ -76,6 +83,7 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
 	use({
 		"glepnir/lspsaga.nvim",
+		opt = true,
 		branch = "main",
 		requires = {
 			{ "nvim-tree/nvim-web-devicons" },
