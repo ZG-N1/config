@@ -25,8 +25,10 @@ opt.smartcase = true
 opt.cursorline = true
 
 -- appearance
+-- turn on termguicolors for nightfly colorscheme to work
+-- (have to use iterm2 or any other true color terminal)
 opt.termguicolors = true
-opt.background = "dark"
+opt.background = "dark" -- colorschemes that can be light or dark will be made dark
 opt.signcolumn = "yes"
 
 
@@ -41,7 +43,7 @@ opt.clipboard:append("unnamedplus")
 opt.splitright = true
 opt.splitbelow = true
 
-opt.iskeyword:append("-")
+opt.iskeyword:append("-") -- consider string-string as whole word
 
 
 

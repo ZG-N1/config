@@ -12,7 +12,7 @@ end
 local packer_bootstrap = ensure_packer() -- true if packer was just installed
 
 -- autocommand that reloads neovim and installs/updates/removes plugins
--- -- when file is saved
+-- when file is saved
 vim.cmd([[ 
   augroup packer_user_config
     autocmd!
@@ -20,19 +20,23 @@ vim.cmd([[
   augroup end
 ]])
 
+-- import packer safely
 local status, packer = pcall(require, "packer")
 if not status then
 	return
 end
 
+-- add list of plugins to install
 return packer.startup(function(use)
+	-- packer can mange itself
 	use("wbthomason/packer.nvim")
 
 	-- lua functions that many plugins use
 	use("nvim-lua/plenary.nvim")
 
-	use("bluz71/vim-nightfly-guicolors")
-	-- use("morhetz/gruvbox")
+	-- preferred colorscheme
+	-- use("bluz71/vim-nightfly-guicolors")
+	use("morhetz/gruvbox")
 
 	-- tmux & split window navigation
 	use("christoomey/vim-tmux-navigator")
@@ -83,7 +87,6 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
 	use({
 		"glepnir/lspsaga.nvim",
-		opt = true,
 		branch = "main",
 		requires = {
 			{ "nvim-tree/nvim-web-devicons" },
