@@ -64,6 +64,9 @@ return packer.startup(function(use)
 		require = "nvim-tree/nvim-web-devicons",
 	})
 
+	-- leapnvim
+	use("ggandor/leap.nvim")
+
 	-- fuzzy finding
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })

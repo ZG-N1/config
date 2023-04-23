@@ -14,6 +14,8 @@ require("zgn1.plugins.lsp.lspsaga")
 require("zgn1.plugins.lsp.lspconfig")
 require("zgn1.plugins.lsp.null-ls")
 require("zgn1.plugins.autopairs")
+require("nvim-treesitter.install").compilers = { "clang" }
 require("zgn1.plugins.treesitter")
 require("zgn1.plugins.gitsigns")
 require("zgn1.plugins.luatab")
+require("zgn1.plugins.leap")
