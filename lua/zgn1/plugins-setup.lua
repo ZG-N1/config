@@ -60,7 +60,7 @@ return packer.startup(function(use)
 
 	-- tabline
 	use({
-		"alvarosevilla95/luatab.nvim",
+		"crispgm/nvim-tabline",
 		require = "nvim-tree/nvim-web-devicons",
 	})
 
