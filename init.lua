@@ -1,5 +1,5 @@
 -- vim.cmd("cd  C:/Users/ZGN1/AppData/Local/nvim")
-vim.cmd("cd  C:/Users/ZGN1/Rworks")
+-- vim.cmd("cd  C:/Users/ZGN1/Rworks")
 require("zgn1.plugins-setup")
 require("zgn1.core.options")
 require("zgn1.core.keymaps")

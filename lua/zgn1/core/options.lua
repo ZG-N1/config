@@ -16,7 +16,7 @@ opt.wrap = false
 -- code fold
 opt.foldmethod = "indent"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
--- avoiding fold when open file in the first time
+-- -- avoiding fold when open file in the first time
 vim.cmd([[
   augroup packer_user_config
     autocmd!

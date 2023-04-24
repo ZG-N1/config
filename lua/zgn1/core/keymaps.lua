@@ -12,6 +12,10 @@ keymap.set("n", "L", "$")
 keymap.set("n", "H", "0")
 keymap.set("n", "dL", "d$")
 keymap.set("n", "dH", "d0")
+keymap.set("n", "vL", "v$")
+keymap.set("n", "vH", "v0")
+keymap.set("n", "yL", "y$")
+keymap.set("n", "yH", "y0")
 
 -- use jk to exit insert mode
 keymap.set("i", "jk", "<ESC>")
