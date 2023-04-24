@@ -119,6 +119,9 @@ return packer.startup(function(use)
 	-- indent-blankline
 	use("lukas-reineke/indent-blankline.nvim")
 
+	-- lines-moving
+	use("fedepujol/move.nvim")
+
 	-- git integration
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
 

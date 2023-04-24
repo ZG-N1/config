@@ -2,6 +2,7 @@
 vim.g.mapleader = " "
 
 local keymap = vim.keymap -- for conciseness
+local opts = { noremap = true, silent = true }
 
 ---------------------
 -- General Keymaps
@@ -61,3 +62,17 @@ keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current c
 
 -- restart lsp server (not on youtube nvim video)
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
+
+-- lines-moving
+-- Normal-mode commands
+keymap.set("n", "<A-j>", ":MoveLine(1)<CR>", opts)
+keymap.set("n", "<A-k>", ":MoveLine(-1)<CR>", opts)
+keymap.set("n", "<A-h>", ":MoveHChar(-1)<CR>", opts)
+keymap.set("n", "<A-l>", ":MoveHChar(1)<CR>", opts)
+keymap.set("n", "<leader>wf", ":MoveWord(1)<CR>", opts)
+keymap.set("n", "<leader>wb", ":MoveWord(-1)<CR>", opts)
+-- Visual-mode commands
+keymap.set("v", "<A-j>", ":MoveBlock(1)<CR>", opts)
+keymap.set("v", "<A-k>", ":MoveBlock(-1)<CR>", opts)
+keymap.set("v", "<A-h>", ":MoveHBlock(-1)<CR>", opts)
+keymap.set("v", "<A-l>", ":MoveHBlock(1)<CR>", opts)

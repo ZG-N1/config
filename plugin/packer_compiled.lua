@@ -164,6 +164,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["move.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\move.nvim",
+    url = "https://github.com/fedepujol/move.nvim"
+  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\null-ls.nvim",
