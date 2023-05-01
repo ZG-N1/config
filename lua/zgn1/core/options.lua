@@ -18,7 +18,7 @@ opt.foldmethod = "indent"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- -- avoiding fold when open file in the first time
 vim.cmd([[
-  augroup packer_user_config
+  augroup user_config_options
     autocmd!
     autocmd BufReadPost,FileReadPost * normal zR
   augroup end
