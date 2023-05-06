@@ -75,6 +75,7 @@ return packer.startup(function(use)
 	use("hrsh7th/nvim-cmp") -- completion plugin
 	use("hrsh7th/cmp-buffer") -- source for text in buffer
 	use("hrsh7th/cmp-path") -- source for file system paths
+	use("jalvesaq/cmp-nvim-r")
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") -- snippet engine
@@ -135,8 +136,26 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- toggleterm
+	use({
+		"akinsho/toggleterm.nvim",
+		tag = "*",
+	})
+
 	-- dap
 	use("mfussenegger/nvim-dap")
+
+	-- dap ui
+	use({
+		"rcarriga/nvim-dap-ui",
+		requires = { "mfussenegger/nvim-dap" },
+	})
+
+	-- dap for python
+	use("mfussenegger/nvim-dap-python")
+
+	-- debug for R
+	use("jamespeapen/Nvim-R")
 
 	if packer_bootstrap then
 		require("packer").sync()

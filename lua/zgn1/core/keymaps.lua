@@ -83,3 +83,10 @@ keymap.set("v", "<A-j>", ":MoveBlock(1)<CR>", opts)
 keymap.set("v", "<A-k>", ":MoveBlock(-1)<CR>", opts)
 keymap.set("v", "<A-h>", ":MoveHBlock(-1)<CR>", opts)
 keymap.set("v", "<A-l>", ":MoveHBlock(1)<CR>", opts)
+
+-- dap
+keymap.set("n", "<F5>", require("dap").continue)
+keymap.set("n", "<F10>", require("dap").step_over)
+keymap.set("n", "<F11>", require("dap").step_into)
+keymap.set("n", "<F12>", require("dap").step_out)
+keymap.set("n", "<leader>b", require("dap").toggle_breakpoint)

@@ -13,9 +13,8 @@ opt.autoindent = true
 -- line wrapping
 opt.wrap = false
 
--- code fold
-opt.foldmethod = "indent"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- code fold (lsp based)
+opt.foldmethod = "syntax"
 -- -- avoiding fold when open file in the first time
 vim.cmd([[
   augroup user_config_options
