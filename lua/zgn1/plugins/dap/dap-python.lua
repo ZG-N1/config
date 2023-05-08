@@ -1,27 +1,22 @@
-local M = {}
-function M.setup(_)
-	require("dap-python").setup("python", {})
-end
-return M
-
+require("dap-python").setup("~/miniconda3/python")
 
 local dap = require("dap")
 dap.adapters.python = {
-  {
-  type = "executable",
-  command = os.getenv("HOME") .. "~/miniconda3/python",
-  args = { "-m", "debugpy.adapter" },
-  },
+	{
+		type = "executable",
+		command = os.getenv("HOME") .. "~/miniconda3/python",
+		args = { "-m", "debugpy.adapter" },
+	},
 }
 
 dap.configurations.python = {
-  {
-    type = 'python',
-    request = 'launch',
-    name = "Launch file",
-    program = "${file}",
-    pythonPath = function()
-      return "~/miniconda3/python"
-    end,
-  },
+	{
+		type = "python",
+		request = "launch",
+		name = "Launch file",
+		program = "${file}",
+		pythonPath = function()
+			return "~/miniconda3/python"
+		end,
+	},
 }

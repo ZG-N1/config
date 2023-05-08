@@ -85,9 +85,16 @@ _G.packer_plugins = {
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
   ["Nvim-R"] = {
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\Nvim-R",
+    url = "https://github.com/jalvesaq/Nvim-R"
+  },
+  ["R-Vim-runtime"] = {
     loaded = true,
-    path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\Nvim-R",
-    url = "https://github.com/jamespeapen/Nvim-R"
+    path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\R-Vim-runtime",
+    url = "https://github.com/jalvesaq/R-Vim-runtime"
   },
   ReplaceWithRegister = {
     loaded = true,
@@ -306,7 +313,14 @@ vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
 vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
+vim.cmd [[au FileType r ++once lua require("packer.load")({'Nvim-R'}, { ft = "r" }, _G.packer_plugins)]]
+vim.cmd [[au FileType rmd ++once lua require("packer.load")({'Nvim-R'}, { ft = "rmd" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
+vim.cmd("augroup END")
+vim.cmd [[augroup filetypedetect]]
+time([[Sourcing ftdetect script at: C:\Users\ZGN1\AppData\Local\nvim-data\site\pack\packer\opt\Nvim-R\ftdetect\r.vim]], true)
+vim.cmd [[source C:\Users\ZGN1\AppData\Local\nvim-data\site\pack\packer\opt\Nvim-R\ftdetect\r.vim]]
+time([[Sourcing ftdetect script at: C:\Users\ZGN1\AppData\Local\nvim-data\site\pack\packer\opt\Nvim-R\ftdetect\r.vim]], false)
 vim.cmd("augroup END")
 
 _G._packer.inside_compile = false

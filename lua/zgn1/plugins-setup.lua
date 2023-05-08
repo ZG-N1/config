@@ -155,7 +155,12 @@ return packer.startup(function(use)
 	use("mfussenegger/nvim-dap-python")
 
 	-- debug for R
-	use("jamespeapen/Nvim-R")
+	use({
+		"jalvesaq/Nvim-R",
+		ft = { "r", "rmd" },
+	})
+
+	use("jalvesaq/R-Vim-runtime")
 
 	if packer_bootstrap then
 		require("packer").sync()
