@@ -1,7 +1,12 @@
+-- 加载插件安装调用
 require("zgn1.plugins-setup")
+
+-- neovim相关配置调用
 require("zgn1.core.options")
 require("zgn1.core.keymaps")
 require("zgn1.core.colorscheme")
+
+-- 各插件的个性化配置调用
 require("zgn1.plugins.comment")
 require("zgn1.plugins.nvim-tree")
 require("zgn1.plugins.lualine2")
@@ -17,8 +22,10 @@ require("zgn1.plugins.gitsigns")
 require("zgn1.plugins.tabline")
 require("zgn1.plugins.leap")
 require("zgn1.plugins.indent-blankline")
-require("zgn1.plugins.dap.dap-ui")
 require("zgn1.plugins.toggleterm")
+
+-- 调试插件调用
 require("zgn1.plugins.cmp-nvim-r")
 require("zgn1.plugins.nvim-r")
+require("zgn1.plugins.dap.dap-ui")
 require("zgn1.plugins.dap.dap-python")

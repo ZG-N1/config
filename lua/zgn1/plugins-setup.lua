@@ -142,6 +142,9 @@ return packer.startup(function(use)
 		tag = "*",
 	})
 
+	-- AI
+	use("zhenyangze/vim-bitoai")
+
 	-- dap
 	use("mfussenegger/nvim-dap")
 
@@ -159,7 +162,6 @@ return packer.startup(function(use)
 		"jalvesaq/Nvim-R",
 		ft = { "r", "rmd" },
 	})
-
 	use("jalvesaq/R-Vim-runtime")
 
 	if packer_bootstrap then

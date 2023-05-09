@@ -1,12 +1,10 @@
-require("dap-python").setup("~/miniconda3/python")
+-- require("dap-python").setup("C:/Users/ZGN1/miniconda3/envs/learnpy/python")
 
 local dap = require("dap")
 dap.adapters.python = {
-	{
-		type = "executable",
-		command = os.getenv("HOME") .. "~/miniconda3/python",
-		args = { "-m", "debugpy.adapter" },
-	},
+	type = "executable",
+	command = "C:/Users/ZGN1/miniconda3/envs/learnpy/python",
+	args = { "-m", "debugpy.adapter" },
 }
 
 dap.configurations.python = {
@@ -16,7 +14,7 @@ dap.configurations.python = {
 		name = "Launch file",
 		program = "${file}",
 		pythonPath = function()
-			return "~/miniconda3/python"
+			return "C:/Users/ZGN1/miniconda3/envs/learnpy/python"
 		end,
 	},
 }
