@@ -48,3 +48,4 @@ opt.splitright = true
 opt.splitbelow = true
 
 opt.iskeyword:append("-") -- consider string-string as whole word
+-- terminal font

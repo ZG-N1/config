@@ -29,3 +29,6 @@ require("zgn1.plugins.cmp-nvim-r")
 require("zgn1.plugins.nvim-r")
 require("zgn1.plugins.dap.dap-ui")
 require("zgn1.plugins.dap.dap-python")
+
+-- 调用AI配置
+require("zgn1.plugins.ai.bitoai")

@@ -1,2 +1,2 @@
-call GuiWindowFrameless(0)
-call GuiWindowMaximized(1)
+" call GuiWindowFrameless(0)
+" call GuiWindowMaximized(1)

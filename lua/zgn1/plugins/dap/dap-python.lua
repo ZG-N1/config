@@ -1,5 +1,3 @@
--- require("dap-python").setup("C:/Users/ZGN1/miniconda3/envs/learnpy/python")
-
 local dap = require("dap")
 dap.adapters.python = {
 	type = "executable",
@@ -8,13 +6,11 @@ dap.adapters.python = {
 }
 
 dap.configurations.python = {
-	{
-		type = "python",
-		request = "launch",
-		name = "Launch file",
-		program = "${file}",
-		pythonPath = function()
-			return "C:/Users/ZGN1/miniconda3/envs/learnpy/python"
-		end,
-	},
+	type = "python",
+	request = "launch",
+	name = "Launch file",
+	program = "${file}",
+	pythonPath = function()
+		return "C:/Users/ZGN1/miniconda3/envs/learnpy/python"
+	end,
 }
