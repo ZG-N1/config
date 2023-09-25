@@ -155,7 +155,12 @@ return packer.startup(function(use)
 	})
 
 	-- dap for python
-	use("mfussenegger/nvim-dap-python")
+	use({
+		"mfussenegger/nvim-dap-python",
+		dependencies = {
+			"rcarriga/nvim-dap-ui",
+		},
+	})
 
 	-- debug for R
 	use({
