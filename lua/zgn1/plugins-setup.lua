@@ -58,6 +58,9 @@ return packer.startup(function(use)
 	-- statusline
 	use("nvim-lualine/lualine.nvim")
 
+	-- time for lualine
+	use("archibate/lualine-time")
+
 	-- tabline
 	use({
 		"crispgm/nvim-tabline",

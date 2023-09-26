@@ -161,6 +161,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lspsaga.nvim",
     url = "https://github.com/glepnir/lspsaga.nvim"
   },
+  ["lualine-time"] = {
+    loaded = true,
+    path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lualine-time",
+    url = "https://github.com/archibate/lualine-time"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lualine.nvim",

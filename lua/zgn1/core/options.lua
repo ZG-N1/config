@@ -1,3 +1,4 @@
+local vim = vim
 local opt = vim.opt -- for conciseness
 
 -- line numbers
@@ -13,15 +14,19 @@ opt.autoindent = true
 -- line wrapping
 opt.wrap = false
 
--- code fold (lsp based)
-opt.foldmethod = "syntax"
+-- code fold (treesitter based)
+opt.foldlevel = 99
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+
 -- -- avoiding fold when open file in the first time
-vim.cmd([[
-  augroup user_config_options
-    autocmd!
-    autocmd BufReadPost,FileReadPost * normal zR
-  augroup end
-]])
+
+-- vim.cmd([[
+--   augroup user_config_options
+--     autocmd!
+--     autocmd BufReadPost,FileReadPost * normal zR
+--   augroup END
+-- ]])
 
 -- search settings
 opt.ignorecase = true

@@ -32,6 +32,13 @@ nvimtree.setup({
 		},
 	},
 	git = {
+		enable = true,
 		ignore = true,
+	},
+	filters = {
+		dotfiles = true,
+		git_clean = false,
+		no_buffer = false,
+		custom = {},
 	},
 })
