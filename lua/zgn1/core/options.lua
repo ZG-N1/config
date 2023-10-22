@@ -14,10 +14,11 @@ opt.autoindent = true
 -- line wrapping
 opt.wrap = false
 
+-- -- have use nvim-ufo to replace
 -- code fold (treesitter based)
-opt.foldlevel = 99
-opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- opt.foldmethod = "expr"
+-- opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- opt.foldlevel = 99
 
 -- -- avoiding fold when open file in the first time
 
@@ -39,7 +40,7 @@ opt.cursorline = true
 -- turn on termguicolors for nightfly colorscheme to work
 -- (have to use iterm2 or any other true color terminal)
 opt.termguicolors = true
-opt.background = "light" -- colorschemes that can be light or dark will be made dark
+opt.background = "dark" -- colorschemes that can be light or dark will be made dark
 opt.signcolumn = "yes"
 
 -- backspace

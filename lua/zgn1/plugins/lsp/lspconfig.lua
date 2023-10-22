@@ -28,6 +28,7 @@ local on_attach = function(client, bufnr)
 	keymap.set("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
 	keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
 	keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
+	keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts) -- go to references
 	keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
 	keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
 	keymap.set("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
@@ -60,6 +61,7 @@ end
 lspconfig["r_language_server"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	filetypes = { "r" },
 })
 
 -- configure python server
@@ -73,6 +75,7 @@ lspconfig["pyright"].setup({
 lspconfig["html"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	filetypes = { "html" },
 })
 
 -- configure typescript server with plugin

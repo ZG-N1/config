@@ -1,3 +1,7 @@
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- 加载插件安装调用
 require("zgn1.plugins-setup")
 
@@ -23,6 +27,7 @@ require("zgn1.plugins.tabline")
 require("zgn1.plugins.leap")
 require("zgn1.plugins.indent-blankline")
 require("zgn1.plugins.toggleterm")
+require("zgn1.plugins.nvim-ufo")
 
 -- 调试插件调用
 require("zgn1.plugins.cmp-nvim-r")

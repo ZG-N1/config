@@ -50,7 +50,7 @@ return packer.startup(function(use)
 	use("numToStr/Comment.nvim") -- need configured
 
 	-- file explorer
-	use("nvim-tree/nvim-tree.lua")
+	use({ "nvim-tree/nvim-tree.lua", require = "nvim-tree/nvim-web-devicons" })
 
 	-- icons
 	use("nvim-tree/nvim-web-devicons")
@@ -96,6 +96,14 @@ return packer.startup(function(use)
 			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
 			ts_update()
 		end,
+	})
+
+	-- nvim-ufo perfect fold
+	use({
+		"kevinhwang91/nvim-ufo",
+		requires = {
+			"kevinhwang91/promise-async",
+		},
 	})
 
 	-- configuring lsp servers

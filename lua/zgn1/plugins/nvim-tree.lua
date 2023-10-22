@@ -13,12 +13,32 @@ vim.cmd([[ highlight NvimTreeIndentMarker guifg=#3FC5FF ]])
 nvimtree.setup({
 	renderer = {
 		icons = {
+			show = {
+				file = true,
+				folder = true,
+				folder_arrow = true,
+				git = true,
+				modified = true,
+				diagnostics = true,
+				bookmarks = true,
+			},
 			glyphs = {
 				folder = {
 					arrow_closed = "",
 					arrow_open = "",
 				},
+				git = {
+					unstaged = "✗",
+					staged = "✓",
+					unmerged = "",
+					renamed = "➜",
+					untracked = "★",
+					deleted = "",
+					ignored = "◌",
+				},
 			},
+			git_placement = "before",
+			modified_placement = "after",
 		},
 	},
 	-- disable window_picker for
@@ -34,6 +54,9 @@ nvimtree.setup({
 	git = {
 		enable = true,
 		ignore = true,
+		show_on_dirs = true,
+		show_on_open_dirs = true,
+		timeout = 400,
 	},
 	filters = {
 		dotfiles = true,
