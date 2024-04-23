@@ -74,11 +74,15 @@ return packer.startup(function(use)
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })
 
+	-- coc-nvim使vim像VScode,补全,语法检查
+	use({ "neoclide/coc.nvim", branch = "release" })
 	-- autocompletion
 	use("hrsh7th/nvim-cmp") -- completion plugin
 	use("hrsh7th/cmp-buffer") -- source for text in buffer
 	use("hrsh7th/cmp-path") -- source for file system paths
 	use("jalvesaq/cmp-nvim-r")
+	-- 多光标编辑
+	use({ "mg979/vim-visual-multi", branch = "master" })
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") -- snippet engine
@@ -154,7 +158,7 @@ return packer.startup(function(use)
 	})
 
 	-- AI
-	use("zhenyangze/vim-bitoai")
+	-- use("zhenyangze/vim-bitoai")
 
 	-- dap
 	use("mfussenegger/nvim-dap")
