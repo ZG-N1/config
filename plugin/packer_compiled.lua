@@ -203,6 +203,26 @@ _G.packer_plugins = {
     path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\move.nvim",
     url = "https://github.com/fedepujol/move.nvim"
   },
+  ["ncm-R"] = {
+    loaded = true,
+    path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\ncm-R",
+    url = "https://github.com/gaalcaras/ncm-R"
+  },
+  ncm2 = {
+    loaded = true,
+    path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\ncm2",
+    url = "https://github.com/ncm2/ncm2"
+  },
+  ["ncm2-bufword"] = {
+    loaded = true,
+    path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\ncm2-bufword",
+    url = "https://github.com/ncm2/ncm2-bufword"
+  },
+  ["ncm2-path"] = {
+    loaded = true,
+    path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\ncm2-path",
+    url = "https://github.com/ncm2/ncm2-path"
+  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\null-ls.nvim",
@@ -238,6 +258,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-nio"] = {
+    loaded = true,
+    path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-nio",
+    url = "https://github.com/nvim-neotest/nvim-nio"
+  },
   ["nvim-tabline"] = {
     loaded = true,
     path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-tabline",
@@ -270,6 +295,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
+  ["nvim-yarp"] = {
+    loaded = true,
+    path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-yarp",
+    url = "https://github.com/roxma/nvim-yarp"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\packer.nvim",
@@ -284,6 +314,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\promise-async",
     url = "https://github.com/kevinhwang91/promise-async"
+  },
+  tabular = {
+    loaded = true,
+    path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\tabular",
+    url = "https://github.com/godlygeek/tabular"
   },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
@@ -337,9 +372,9 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType r ++once lua require("packer.load")({'Nvim-R'}, { ft = "r" }, _G.packer_plugins)]]
 vim.cmd [[au FileType rmd ++once lua require("packer.load")({'Nvim-R'}, { ft = "rmd" }, _G.packer_plugins)]]
 vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
+vim.cmd [[au FileType r ++once lua require("packer.load")({'Nvim-R'}, { ft = "r" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]

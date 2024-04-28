@@ -1,0 +1,1 @@
+-- require("ncm2").completeopt = { "noinsert", "menuone", "noselect" }

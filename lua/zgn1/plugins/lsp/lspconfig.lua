@@ -64,6 +64,13 @@ lspconfig["r_language_server"].setup({
 	filetypes = { "r" },
 })
 
+-- configure json server
+lspconfig["biome"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	filetypes = { "json" },
+})
+
 -- configure python server
 lspconfig["pyright"].setup({
 	capabilities = capabilities,

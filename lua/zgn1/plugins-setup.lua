@@ -31,6 +31,9 @@ return packer.startup(function(use)
 	-- packer can mange itself
 	use("wbthomason/packer.nvim")
 
+	-- align text
+	use("godlygeek/tabular")
+
 	-- lua functions that many plugins use
 	use("nvim-lua/plenary.nvim")
 
@@ -81,11 +84,20 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-buffer") -- source for text in buffer
 	use("hrsh7th/cmp-path") -- source for file system paths
 	use("jalvesaq/cmp-nvim-r")
+	use("gaalcaras/ncm-R")
+	use("roxma/nvim-yarp")
+	use("ncm2/ncm2")
+	use("ncm2/ncm2-bufword")
+	use("ncm2/ncm2-path")
 	-- 多光标编辑
 	use({ "mg979/vim-visual-multi", branch = "master" })
 
 	-- snippets
-	use("L3MON4D3/LuaSnip") -- snippet engine
+	use({
+		"L3MON4D3/LuaSnip", --snippet engine
+		dependencies = { "rafamadriz/friendly-snippets" }, --provide some language snippets
+		run = "make install_jsregexp", -- use to jump between snippet's filed
+	})
 	use("saadparwaiz1/cmp_luasnip") -- for autocompletion
 	use("rafamadriz/friendly-snippets") -- useful snippets
 
@@ -163,6 +175,8 @@ return packer.startup(function(use)
 	-- dap
 	use("mfussenegger/nvim-dap")
 
+	-- nvim-nio for nvim-dap-ui
+	use("nvim-neotest/nvim-nio")
 	-- dap ui
 	use({
 		"rcarriga/nvim-dap-ui",
