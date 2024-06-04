@@ -43,12 +43,24 @@ cmp.setup({
 		{ name = "buffer" }, -- text within current buffer
 		{ name = "path" }, -- file system paths
 		{ name = "cmp_nvim_r" }, -- from nvim_r
+		{ name = "calc" },
+		{ name = "cmp_r" },
 	}),
+
 	-- configure lspkind for vs-code like icons
 	formatting = {
 		format = lspkind.cmp_format({
+			mode = "symbol_text",
 			maxwidth = 50,
-			ellipsis_char = "...",
+			menu = {
+				buffer = "[Buffer]",
+				nvim_lsp = "[LSP]",
+				lunsnip = "[LuaSnip]",
+				path = "[Path]",
+				cmp_nvim_r = "[R]",
+				cmp_r = "[R]",
+			},
+			-- ellipsis_char = "...",
 		}),
 	},
 })

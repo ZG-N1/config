@@ -85,6 +85,8 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-path") -- source for file system paths
 	use("jalvesaq/cmp-nvim-r")
 	use("gaalcaras/ncm-R")
+	use("R-nvim/cmp-r")
+	use("hrsh7th/cmp-calc")
 	use("roxma/nvim-yarp")
 	use("ncm2/ncm2")
 	use("ncm2/ncm2-bufword")
@@ -182,6 +184,7 @@ return packer.startup(function(use)
 		"rcarriga/nvim-dap-ui",
 		requires = { "mfussenegger/nvim-dap" },
 	})
+	use("theHamsta/nvim-dap-virtual-text")
 
 	-- dap for python
 	use({

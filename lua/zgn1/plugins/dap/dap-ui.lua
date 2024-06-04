@@ -12,6 +12,9 @@ end
 
 dapui.setup()
 
--- sign
-vim.fn.sign_define("DapBreakpoint", { text = "🟥", texthl = "", linehl = "", numhl = "" })
+-- sign"🟥"
+vim.fn.sign_define("DapBreakpoint", { text = "B", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapStopped", { text = "▶️", texthl = "", linehl = "", numhl = "" })
+
+-- 启动实时显示变量值
+require("nvim-dap-virtual-text").setup()

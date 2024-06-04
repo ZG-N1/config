@@ -55,3 +55,5 @@ opt.splitbelow = true
 
 opt.iskeyword:append("-") -- consider string-string as whole word
 -- terminal font
+-- popupmenu color
+vim.cmd("hi CmpMenu guibg=rgba:0.5/0.5/0.5/0.8")

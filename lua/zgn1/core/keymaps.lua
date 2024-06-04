@@ -10,6 +10,9 @@ local opts = { noremap = true, silent = true }
 --生成管道符
 keymap.set("i", "%%", "<space>%>%<space>")
 
+--查询选中的内容
+keymap.set("v", "//", 'y/<C-r>"<cr>')
+
 --use dL & dH to replace d$ and d0
 keymap.set("n", "L", "$")
 keymap.set("n", "H", "0")
@@ -30,8 +33,8 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 keymap.set("n", "x", '"_x')
 
 -- increment/decrement numbers
-keymap.set("n", "<leader>+", "<C-a>") -- increment
-keymap.set("n", "<leader>-", "<C-x>") -- decrement
+-- keymap.set("n", "<leader>+", "<C-a>") -- increment
+-- keymap.set("n", "<leader>-", "<C-x>") -- decrement
 
 -- window management
 keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
@@ -264,3 +267,11 @@ keymap.set("n", "<space><space>j", ":<C-u>CocNext<cr>", opts)
 keymap.set("n", "<space><space>k", ":<C-u>CocPrev<cr>", opts)
 -- Resume latest coc list
 keymap.set("n", "<space><space>p", ":<C-u>CocListResume<cr>", opts)
+
+-- dap keymap
+keymap.set("n", "<leader>du", function()
+	require("dapui").toggle()
+end, { noremap = true, silent = true })
+keymap.set("n", "<leader>dt", function()
+	require("dap").terminate()
+end, { noremap = true, silent = true })
