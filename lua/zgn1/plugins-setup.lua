@@ -139,8 +139,10 @@ return packer.startup(function(use)
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 
 	-- formatting & linting
-	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
-	use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+	-- use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
+	-- use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+	use("stevearc/conform.nvim")
+	use("mfussenegger/nvim-lint")
 
 	-- auto closing
 	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
@@ -170,9 +172,6 @@ return packer.startup(function(use)
 		"akinsho/toggleterm.nvim",
 		tag = "*",
 	})
-
-	-- AI
-	-- use("zhenyangze/vim-bitoai")
 
 	-- dap
 	use("mfussenegger/nvim-dap")
