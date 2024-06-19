@@ -10,7 +10,7 @@ require("nvim-treesitter.install").compilers = { "clang" }
 treesitter.setup({
 	-- enable syntax highlighting
 	highlight = {
-		enable = true,
+		enable = false,
 		additional_vim_regex_highlighting = false,
 	},
 	incremental_selection = {
@@ -24,8 +24,6 @@ treesitter.setup({
 	},
 	-- enable indentation
 	indent = { enable = true },
-	-- enable autotagging (w/ nvim-ts-autotag plugin)
-	autotag = { enable = true },
 	-- ensure these language parsers are installed
 	ensure_installed = {
 		"json",

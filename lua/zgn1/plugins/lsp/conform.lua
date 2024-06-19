@@ -3,11 +3,13 @@ if not status_ then
 	return
 end
 
+-- formating file
+
 conform.setup({
 	formatters_by_ft = {
-		lua = { "stylua", "lua-language-server" },
+		lua = { { "stylua", "lua-language-server" } },
 		-- Conform will run multiple formatters sequentially
-		python = { "isort", "black" },
+		python = { { "isort", "black" } },
 		-- Use a sub-list to run only the first available formatter
 		javascript = { { "prettierd", "prettier", "biome" } },
 		typescript = { { "prettierd", "prettier", "biome" } },

@@ -2,6 +2,11 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+--取消显示代码建议小灯泡
+-- vim.cmd([[
+--   autocmd FileType * setlocal signcolumn=no
+-- ]])
+
 -- 在进入和退出文档时保存和加载视图(如折叠状态)
 -- vim.api.nvim_command("au BufWinLeave * silent mkview")
 -- vim.api.nvim_command("au BufWinEnter * silent loadview")
@@ -40,5 +45,7 @@ require("zgn1.plugins.move")
 require("zgn1.plugins.cmp-nvim-r")
 require("zgn1.plugins.nvim-r")
 require("zgn1.plugins.ncm2")
+require("zgn1.plugins.dap.nvim-dap")
 require("zgn1.plugins.dap.dap-ui")
 require("zgn1.plugins.dap.dap-python")
+require("zgn1.plugins.dap.dap-javascript")

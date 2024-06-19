@@ -51,6 +51,10 @@ keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
 keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
 keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 
+-- jump between buffers
+keymap.set("n", "<leader>bn", ":bnext<CR>") -- go to next buffer
+keymap.set("n", "<leader>bp", ":bprevious<CR>") -- go to next buffer
+
 ----------------------
 -- Plugin Keybinds
 ----------------------
@@ -93,13 +97,6 @@ keymap.set("v", "<A-j>", ":MoveBlock(1)<CR>", opts)
 keymap.set("v", "<A-k>", ":MoveBlock(-1)<CR>", opts)
 keymap.set("v", "<A-h>", ":MoveHBlock(-1)<CR>", opts)
 keymap.set("v", "<A-l>", ":MoveHBlock(1)<CR>", opts)
-
--- dap
-keymap.set("n", "<F5>", require("dap").continue)
-keymap.set("n", "<F10>", require("dap").step_over)
-keymap.set("n", "<F11>", require("dap").step_into)
-keymap.set("n", "<F12>", require("dap").step_out)
-keymap.set("n", "<leader>b", require("dap").toggle_breakpoint)
 
 -- coc-nvim
 local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }

@@ -31,35 +31,28 @@ local on_attach = function(client, bufnr)
 	keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
 	keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
 	keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
+
+	vim.diagnostic.config({
+		signs = {
+			text = {
+				[vim.diagnostic.severity.ERROR] = "",
+				[vim.diagnostic.severity.WARN] = "",
+				[vim.diagnostic.severity.HINT] = "",
+				[vim.diagnostic.severity.INFO] = "",
+			},
+			linehl = {
+				"",
+				-- [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+			},
+			numhl = {
+				[vim.diagnostic.severity.WARN] = "WarningMsg",
+			},
+		},
+	})
 end
 -- used to enable autocompletion (assign to every lsp server config)
 local capabilities = cmp_nvim_lsp.default_capabilities()
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
 
--- Change the Diagnostic symbols in the sign column (gutter)
--- (not in youtube nvim video)
--- local signs = { Error = " ", Warn = " ", Hint = "ﴞ ", Info = " " }
--- for type, icon in pairs(signs) do
--- 	local hl = "DiagnosticSign" .. type
--- 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
--- end
-
-vim.diagnostic.config({
-	signs = {
-		text = {
-			[vim.diagnostic.severity.ERROR] = " ",
-			[vim.diagnostic.severity.WARN] = " ",
-			[vim.diagnostic.severity.HINT] = "ﴞ ",
-			[vim.diagnostic.severity.INFO] = " ",
-		},
-		linehl = {
-			[vim.diagnostic.severity.ERROR] = "ErrorMsg",
-		},
-		numhl = {
-			[vim.diagnostic.severity.WARN] = "WarningMsg",
-		},
-	},
-})
 -- configure R server
 lspconfig["r_language_server"].setup({
 	capabilities = capabilities,
@@ -67,52 +60,59 @@ lspconfig["r_language_server"].setup({
 	filetypes = { "r" },
 })
 
--- configure json server
-lspconfig["biome"].setup({
+-- configure javascript server
+lspconfig.biome.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	filetypes = { "json" },
+	filetypes = { "javascript", "json" },
 })
 
+lspconfig.tsserver.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
 -- configure python server
-lspconfig["pylsp"].setup({
+
+lspconfig.pyright.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	filetypes = { "python" },
 })
 
+lspconfig.pylsp.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	filetypes = { "python" },
+	settings = {
+		pylsp = {
+			configurationSources = { "flake8" },
+			plugins = {
+				pylint = {
+					enabled = false,
+				},
+				flake8 = {
+					enabled = true,
+					extendIgnore = { "E501" },
+				},
+				mccabe = {
+					enabled = false,
+				},
+				pycodestyle = {
+					enabled = false,
+				},
+				pyflakes = {
+					enabled = false,
+				},
+			},
+		},
+	},
+})
+--
+--
 -- configure html server
 lspconfig["html"].setup({
-	capabilities = capabilities,
 	on_attach = on_attach,
+	capabilities = capabilities,
 	filetypes = { "html" },
-})
-
--- configure typescript server with plugin
--- typescript.setup({
--- 	server = {
--- 		capabilities = capabilities,
--- 		on_attach = on_attach,
--- 	},
--- })
---
--- -- configure css server
--- lspconfig["cssls"].setup({
--- 	capabilities = capabilities,
--- 	on_attach = on_attach,
--- })
---
--- -- configure tailwindcss server
--- lspconfig["tailwindcss"].setup({
--- 	capabilities = capabilities,
--- 	on_attach = on_attach,
--- })
-
---configure emmet language server
-lspconfig["emmet_ls"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-	filetypes = { "html", "typescript", "javascript", "css", "sass", "scss", "less", "svelte" },
 })
 
 -- configure lua server (with special settings)
@@ -122,20 +122,20 @@ lspconfig["lua_ls"].setup({
 	filetypes = { "lua" },
 	settings = {
 		Lua = {
-			runtime = {
-				version = "LuaJIT", -- 在 Neovim 中使用 LuaJIT
-				path = vim.split(package.path, ";"),
-			},
+			-- runtime = {
+			-- 	version = "LuaJIT", -- 在 Neovim 中使用 LuaJIT
+			-- 	path = vim.split(package.path, ";"),
+			-- },
 			diagnostics = {
 				globals = { "vim" }, -- 识别 `vim` 全局变量
 			},
-			workspace = {
-				library = vim.api.nvim_get_runtime_file("", true), -- 使服务器认识 Neovim 运行时文件
-				checkThirdParty = false, -- 提高对 Neovim 特定全局变量的认识
-			},
-			telemetry = {
-				enable = false, -- 禁用遥测数据
-			},
+			-- workspace = {
+			-- 	library = vim.api.nvim_get_runtime_file("", true), -- 使服务器认识 Neovim 运行时文件
+			-- 	checkThirdParty = false, -- 提高对 Neovim 特定全局变量的认识
+			-- },
+			-- telemetry = {
+			-- 	enable = false, -- 禁用遥测数据
+			-- },
 		},
 	},
 })

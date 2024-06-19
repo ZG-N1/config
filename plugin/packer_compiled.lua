@@ -233,6 +233,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\ncm2-path",
     url = "https://github.com/ncm2/ncm2-path"
   },
+  ["neodev.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\neodev.nvim",
+    url = "https://github.com/folke/neodev.nvim"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-autopairs",
@@ -262,6 +267,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-dap-virtual-text",
     url = "https://github.com/theHamsta/nvim-dap-virtual-text"
+  },
+  ["nvim-dap-vscode-js"] = {
+    loaded = true,
+    path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-dap-vscode-js",
+    url = "https://github.com/mxsdev/nvim-dap-vscode-js"
   },
   ["nvim-lint"] = {
     loaded = true,
@@ -374,6 +384,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-visual-multi",
     url = "https://github.com/mg979/vim-visual-multi"
+  },
+  ["vscode-js-debug"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "C:\\Users\\ZGN1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\vscode-js-debug",
+    url = "https://github.com/microsoft/vscode-js-debug"
   }
 }
 
@@ -387,8 +403,8 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType rmd ++once lua require("packer.load")({'Nvim-R'}, { ft = "rmd" }, _G.packer_plugins)]]
 vim.cmd [[au FileType r ++once lua require("packer.load")({'Nvim-R'}, { ft = "r" }, _G.packer_plugins)]]
+vim.cmd [[au FileType rmd ++once lua require("packer.load")({'Nvim-R'}, { ft = "rmd" }, _G.packer_plugins)]]
 vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")

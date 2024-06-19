@@ -167,6 +167,9 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- for lua
+	use({ "folke/neodev.nvim" })
+
 	-- toggleterm
 	use({
 		"akinsho/toggleterm.nvim",
@@ -174,23 +177,37 @@ return packer.startup(function(use)
 	})
 
 	-- dap
-	use("mfussenegger/nvim-dap")
-
-	-- nvim-nio for nvim-dap-ui
-	use("nvim-neotest/nvim-nio")
-	-- dap ui
 	use({
-		"rcarriga/nvim-dap-ui",
-		requires = { "mfussenegger/nvim-dap" },
+		"mfussenegger/nvim-dap",
+		recommended = true,
+		dependencies = {
+			"rcarriga/nvim-dap-ui",
+			-- virtual text for the debugger
+			dependencies = {
+				{ "nvim-neotest/nvim-nio" },
+				{
+					"theHamsta/nvim-dap-virtual-text",
+					opts = {},
+				},
+			},
+		},
 	})
-	use("theHamsta/nvim-dap-virtual-text")
+	use({ "rcarriga/nvim-dap-ui" })
+	use({ "nvim-neotest/nvim-nio" })
+	use({ "theHamsta/nvim-dap-virtual-text" })
 
 	-- dap for python
 	use({
 		"mfussenegger/nvim-dap-python",
-		dependencies = {
-			"rcarriga/nvim-dap-ui",
-		},
+	})
+
+	--debug for javascript
+	use({ "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } })
+	use({
+		"microsoft/vscode-js-debug",
+		version = "1.x",
+		opt = true,
+		run = "npm i && npm run compile vsDebugServerBundle && mv dist out",
 	})
 
 	-- debug for R
