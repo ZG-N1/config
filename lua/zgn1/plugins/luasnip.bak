@@ -1,13 +1,16 @@
 -- local luasnip = require("luasnip")
 --
--- luasnip.config.set_config({
--- 	region_check_events = "InsertEnter",
--- 	delete_check_events = "InsertLeave",
---  })
+-- local cmp = require("cmp")
 
-local luasnip = require("luasnip")
-
-local cmp = require("cmp")
+-- 扩展snippets用于指定 文件类型
+-- luasnip.filetype_extend("html", { "djangohtml" })
+luasnip.filetype_extend("jinja.html", { "djangohtml" })
+-- 加载vscode类snippets，确保已经安装如friendly-snippets
+-- require("luasnip.loaders.from_vscode").load()
+-- will exclude all html snippets
+require("luasnip.loaders.from_vscode").load({
+	exclude = { "html" },
+})
 
 cmp.setup({
 

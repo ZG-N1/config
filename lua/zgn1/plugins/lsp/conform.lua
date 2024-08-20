@@ -7,28 +7,27 @@ end
 
 conform.setup({
 	formatters_by_ft = {
-		lua = { { "stylua", "lua-language-server" } },
-		-- Conform will run multiple formatters sequentially
-		python = { { "isort", "black" } },
-		-- Use a sub-list to run only the first available formatter
-		javascript = { { "prettierd", "prettier", "biome" } },
-		typescript = { { "prettierd", "prettier", "biome" } },
+		lua = { "stylua", "lua-language-server", stop_after_first = true },
+		python = { "black", "isort", stop_after_first = true },
+		javascript = { "prettier", "prettierd", "biome", stop_after_first = true },
+		typescript = { "prettier", "prettierd", "biome", stop_after_first = true },
 		css = { "prettierd" },
 		html = { "prettierd" },
 		json = { "prettierd" },
 		yaml = { "prettierd" },
 		markdown = { "prettierd" },
 		r = { "r-languageserver" },
+		jinja = { "djlint" },
 	},
 	format_on_save = {
 		-- These options will be passed to conform.format()
-		timeout_ms = 500,
+		timeout_ms = 5000,
 		async = false,
 		lsp_fallback = true,
 	},
 	vim.keymap.set({ "n", "v" }, "<leader>mp", function()
 		conform.format({
-			timeout_ms = 500,
+			timeout_ms = 5000,
 			async = false,
 			lsp_fallback = true,
 		})

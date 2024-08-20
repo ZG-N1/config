@@ -1,3 +1,4 @@
+--
 -- import lspconfig plugin safely
 local lspconfig_status, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status then
@@ -71,6 +72,7 @@ lspconfig.tsserver.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
+
 -- configure python server
 
 lspconfig.pyright.setup({
@@ -78,41 +80,47 @@ lspconfig.pyright.setup({
 	on_attach = on_attach,
 })
 
-lspconfig.pylsp.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	filetypes = { "python" },
-	settings = {
-		pylsp = {
-			configurationSources = { "flake8" },
-			plugins = {
-				pylint = {
-					enabled = false,
-				},
-				flake8 = {
-					enabled = true,
-					extendIgnore = { "E501" },
-				},
-				mccabe = {
-					enabled = false,
-				},
-				pycodestyle = {
-					enabled = false,
-				},
-				pyflakes = {
-					enabled = false,
-				},
-			},
-		},
-	},
-})
+-- lspconfig.pylsp.setup({
+-- 	on_attach = on_attach,
+-- 	capabilities = capabilities,
+-- 	filetypes = { "python" },
+-- 	settings = {
+-- 		pylsp = {
+-- 			configurationSources = { "flake8" },
+-- 			plugins = {
+-- 				pylint = {
+-- 					enabled = false,
+-- 				},
+-- 				flake8 = {
+-- 					enabled = true,
+-- 					extendIgnore = { "E501" },
+-- 				},
+-- 				mccabe = {
+-- 					enabled = false,
+-- 				},
+-- 				pycodestyle = {
+-- 					enabled = false,
+-- 				},
+-- 				pyflakes = {
+-- 					enabled = false,
+-- 				},
+-- 			},
+-- 		},
+-- 	},
+-- })
 --
 --
 -- configure html server
-lspconfig["html"].setup({
+lspconfig.html.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	filetypes = { "html" },
+})
+
+lspconfig.jinja_lsp.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	filetypes = { "jinja.html" },
 })
 
 -- configure lua server (with special settings)
@@ -138,4 +146,12 @@ lspconfig["lua_ls"].setup({
 			-- },
 		},
 	},
+})
+
+-- configure css server
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+lspconfig.cssls.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
 })

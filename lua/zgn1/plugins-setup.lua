@@ -31,6 +31,12 @@ return packer.startup(function(use)
 	-- packer can mange itself
 	use("wbthomason/packer.nvim")
 
+	-- preview html and test API
+	use("ray-x/web-tools.nvim")
+
+	-- recognize jinja2
+	use("glench/vim-jinja2-syntax")
+
 	-- align text
 	use("godlygeek/tabular")
 
@@ -53,7 +59,10 @@ return packer.startup(function(use)
 	use("numToStr/Comment.nvim") -- need configured
 
 	-- file explorer
-	use({ "nvim-tree/nvim-tree.lua", require = "nvim-tree/nvim-web-devicons" })
+	use({
+		"nvim-tree/nvim-tree.lua",
+		-- require = "nvim-tree/nvim-web-devicons"
+	})
 
 	-- icons
 	use("nvim-tree/nvim-web-devicons")
@@ -67,7 +76,7 @@ return packer.startup(function(use)
 	-- tabline
 	use({
 		"crispgm/nvim-tabline",
-		require = "nvim-tree/nvim-web-devicons",
+		-- require = "nvim-tree/nvim-web-devicons",
 	})
 
 	-- leapnvim
@@ -97,11 +106,10 @@ return packer.startup(function(use)
 	-- snippets
 	use({
 		"L3MON4D3/LuaSnip", --snippet engine
-		dependencies = { "rafamadriz/friendly-snippets" }, --provide some language snippets
+		requires = { "rafamadriz/friendly-snippets" }, --provide some language snippets
 		run = "make install_jsregexp", -- use to jump between snippet's filed
 	})
 	use("saadparwaiz1/cmp_luasnip") -- for autocompletion
-	use("rafamadriz/friendly-snippets") -- useful snippets
 
 	-- managing & installing lsp servers, linters & formatters
 	use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
@@ -131,18 +139,19 @@ return packer.startup(function(use)
 		"glepnir/lspsaga.nvim",
 		branch = "main",
 		requires = {
-			{ "nvim-tree/nvim-web-devicons" },
-			{ "nvim-treesitter/nvim-treesitter" },
+			-- { "nvim-tree/nvim-web-devicons" },
+			-- { "nvim-treesitter/nvim-treesitter" },
 		},
 	}) -- enhanced lsp uis
 	use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 
 	-- formatting & linting
-	-- use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
-	-- use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+	use({ "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } }) -- configure formatters & linters
+	use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
 	use("stevearc/conform.nvim")
 	use("mfussenegger/nvim-lint")
+	use("mhartington/formatter.nvim")
 
 	-- auto closing
 	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
