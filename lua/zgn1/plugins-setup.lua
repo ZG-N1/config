@@ -226,6 +226,17 @@ return packer.startup(function(use)
 	})
 	use("jalvesaq/R-Vim-runtime")
 
+
+  -- ai coding
+
+  use ({
+      "Exafunction/windsurf.nvim",
+      requires = {
+          "nvim-lua/plenary.nvim",
+          "hrsh7th/nvim-cmp",
+      },
+  })
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end

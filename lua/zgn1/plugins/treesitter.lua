@@ -10,7 +10,7 @@ require("nvim-treesitter.install").compilers = { "clang" }
 treesitter.setup({
 	-- enable syntax highlighting
 	highlight = {
-		enable = false,
+		enable = true,
 		additional_vim_regex_highlighting = false,
 	},
 	incremental_selection = {

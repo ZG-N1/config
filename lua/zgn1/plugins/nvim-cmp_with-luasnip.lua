@@ -70,37 +70,52 @@ cmp.setup({
 	}),
 	-- sources for autocompletion
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp" }, -- lsp
-		{ name = "luasnip" }, -- snippets
-		{ name = "buffer" }, -- text within current buffer
-		{ name = "path" }, -- file system paths
-		{ name = "cmp_nvim_r" }, -- from nvim_r
-		{ name = "calc" },
-		{ name = "cmp_r" },
+  --   { name = "codeium"}, -- codeium-windsurf
+		-- { name = "nvim_lsp" }, -- lsp
+		-- { name = "luasnip" }, -- snippets
+		-- { name = "buffer" }, -- text within current buffer
+		-- { name = "path" }, -- file system paths
+		-- { name = "cmp_nvim_r" }, -- from nvim_r
+		-- { name = "calc" },
+		-- { name = "cmp_r" },
 	}),
 	-- configure lspkind for vs-code like icons
-	formatting = {
-		format = function(entry, vim_item)
-			vim_item.kind = lspkind.presets.default[vim_item.kind] .. " " .. vim_item.kind
-			vim_item.menu = ({
-				buffer = "[Buffer]",
-				nvim_lsp = "[LSP]",
-				luasnip = "[LuaSnip]",
-				path = "[Path]",
-				cmp_nvim_r = "[R]",
-				cmp_r = "[R]",
-			})[entry.source.name]
-			vim_item.dup = ({
-				buffer = 0,
-				nvim_lsp = 0,
-				luasnip = 0,
-				path = 0,
-				cmp_nvim_r = 0,
-				cmp_r = 0,
-			})[entry.source.name] or 0
-			return vim_item
-		end,
-	},
+formatting = {
+      format = function(entry, vim_item)
+          -- 1. 处理 kind 图标（防止 nil 报错）
+          local kind_icon = lspkind.presets.default[vim_item.kind]
+          if kind_icon then
+              vim_item.kind = kind_icon .. " " .. vim_item.kind
+          else
+              vim_item.kind = "" .. " " .. "Anykind"
+          end
+
+          -- 2. 设置菜单来源标识
+          local source_names = {
+              buffer = "[Buf]",
+              nvim_lsp = "[LSP]",
+              luasnip = "[LuaS]",
+              path = "[Path]",
+              cmp_nvim_r = "[R]",
+              cmp_r = "[R2]",
+              codeium = "[AI]",
+          }
+          vim_item.menu = source_names[entry.source.name] or ""
+
+          -- 3. 设置去重规则（避免重复补全）
+          local dup_rules = {
+              buffer = 0,
+              nvim_lsp = 0,
+              luasnip = 0,
+              path = 0,
+              cmp_nvim_r = 0,
+              cmp_r = 0,
+          }
+          vim_item.dup = dup_rules[entry.source.name] or 1  -- 默认允许重复（1），除非明确禁止（0）
+
+          return vim_item
+      end,
+  },
 
 	sorting = {
 		comparators = {

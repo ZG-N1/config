@@ -1,7 +1,7 @@
 local lint = require("lint")
 lint.linters_by_ft = {
 	markdown = { "vale" },
-	-- python = { "pylint" },
+	python = { "pylint" },
 	javascript = { "eslint" },
 	jinja = { "djlint" },
 }
@@ -18,6 +18,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 		-- require("lint").try_lint("cspell")
 	end,
 })
-vim.keymap.set("n", "<leader>ml", function()
+vim.keymap.set("n", "<leader><leader>ml", function()
 	lint.try_lint()
 end, { desc = "Trigger linting for current file" })
