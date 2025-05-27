@@ -1,6 +1,6 @@
 local lint = require("lint")
 lint.linters_by_ft = {
-	markdown = { "vale" },
+	markdown = { "markdownlint" },
 	python = { "pylint" },
 	javascript = { "eslint" },
 	jinja = { "djlint" },

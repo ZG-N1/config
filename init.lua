@@ -2,6 +2,8 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.g.coc_enabled = 0
+
 --取消显示代码建议小灯泡
 -- vim.cmd([[
 --   autocmd FileType * setlocal signcolumn=no
@@ -12,7 +14,7 @@ vim.g.loaded_netrwPlugin = 1
 -- vim.api.nvim_command("au BufWinEnter * silent loadview")
 
 -- 加载插件安装调用
-require("zgn1.plugins-setup")
+require("zgn1.plugins-setup-lazy")
 
 -- neovim相关配置调用
 require("zgn1.core.options")
@@ -20,7 +22,8 @@ require("zgn1.core.keymaps")
 require("zgn1.core.colorscheme")
 
 -- 各插件的个性化配置调用
-require("zgn1.plugins.codeium-windsurf")
+-- require("zgn1.plugins.codeium-windsurf")
+require("zgn1.plugins.gemini")
 require("zgn1.plugins.comment")
 require("zgn1.plugins.nvim-tree")
 require("zgn1.plugins.lualine2")

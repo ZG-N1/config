@@ -22,12 +22,21 @@ require("luasnip.loaders.from_vscode").load()
 -- vim.opt.completeopt = "menu,menuone,noselect"
 --
 
+
+-- 手动切换
+vim.keymap.set('n', '<leader>tc', function()
+    local cmp_status = require'cmp'.get_config().enabled
+    require'cmp'.setup({ enabled = not cmp_status })
+    print("cmp " .. (cmp_status and "Disabled" or "Enabled"))
+end, { desc = 'Toggle cmp manually' })
+
 cmp.setup({
 	-- snippet = {
 	-- 	expand = function(args)
 	-- 		luasnip.lsp_expand(args.body)
 	-- 	end,
 	-- },
+  enabled = false,
 	mapping = cmp.mapping.preset.insert({
 		["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
 		["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
@@ -70,14 +79,14 @@ cmp.setup({
 	}),
 	-- sources for autocompletion
 	sources = cmp.config.sources({
-  --   { name = "codeium"}, -- codeium-windsurf
-		-- { name = "nvim_lsp" }, -- lsp
-		-- { name = "luasnip" }, -- snippets
-		-- { name = "buffer" }, -- text within current buffer
-		-- { name = "path" }, -- file system paths
-		-- { name = "cmp_nvim_r" }, -- from nvim_r
-		-- { name = "calc" },
-		-- { name = "cmp_r" },
+    -- { name = "codeium"}, -- codeium-windsurf
+		{ name = "nvim_lsp" }, -- lsp
+		{ name = "luasnip" }, -- snippets
+		{ name = "buffer" }, -- text within current buffer
+		{ name = "path" }, -- file system paths
+		{ name = "cmp_nvim_r" }, -- from nvim_r
+		{ name = "calc" },
+		{ name = "cmp_r" },
 	}),
 	-- configure lspkind for vs-code like icons
 formatting = {
