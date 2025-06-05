@@ -1,3 +1,4 @@
+-- 安装lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -8,6 +9,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- 唤醒lazy
 local status_ok, lazy = pcall(require, "lazy")
 if not status_ok then
   return
@@ -15,14 +17,11 @@ end
 
 
 lazy.setup({
-  -- whichkey
+  -- whichkeys
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
     },
     keys = {
       {
@@ -32,6 +31,18 @@ lazy.setup({
         end,
         desc = "Buffer Local Keymaps (which-key)",
       },
+    },
+  },
+
+  -- codecompanion
+  {
+    "olimorris/codecompanion.nvim",
+    event = "VeryLazy",
+    opts = {},
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter", 
+      "ravitemer/mcphub.nvim",
     },
   },
 
@@ -45,12 +56,17 @@ lazy.setup({
   {"godlygeek/tabular"},
 
   -- lua functions that many plugins use
-  {"nvim-lua/plenary.nvim"},
+  {"nvim-lua/plenary.nvim", branch = "master"},
 
   -- preferred colorscheme
   -- {"bluz71/vim-nightfly-guicolors"}
   {"morhetz/gruvbox"},
-
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
   -- tmux & split window navigation
   {"christoomey/vim-tmux-navigator"},
 
@@ -59,13 +75,12 @@ lazy.setup({
   {"tpope/vim-surround"}, -- add use keys (ys +motion + quote); delete (ds + quote);change (cs + quote_old + quote_new)
   {"vim-scripts/ReplaceWithRegister"},
 
-  -- commenting with gc
+  -- commenting with "gc"
   {"numToStr/Comment.nvim"}, -- need configured
 
   -- file explorer
   {
     "nvim-tree/nvim-tree.lua",
-    -- dependencies = "nvim-tree/nvim-web-devicons"
   },
 
   -- icons
@@ -77,10 +92,9 @@ lazy.setup({
   -- time for lualine
   {"archibate/lualine-time"},
 
-  -- tabline
+  -- tabline 标签管理
   {
     "crispgm/nvim-tabline",
-    -- dependencies = "nvim-tree/nvim-web-devicons",
   },
 
   -- leapnvim
@@ -88,22 +102,16 @@ lazy.setup({
 
   -- fuzzy finding
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-  { "nvim-telescope/telescope.nvim", branch = "0.1.x" },
+  { "nvim-telescope/telescope.nvim"},
 
-  -- coc-nvim使vim像VScode,补全,语法检查
-  { "neoclide/coc.nvim", branch = "release" },
-  -- autocompletion
-  {"hrsh7th/nvim-cmp"}, -- completion plugin
-  {"hrsh7th/cmp-buffer"}, -- source for text in buffer
-  {"hrsh7th/cmp-path"}, -- source for file system paths
-  {"jalvesaq/cmp-nvim-r"},
-  {"gaalcaras/ncm-R"},
-  {"R-nvim/cmp-r"},
-  {"hrsh7th/cmp-calc"},
-  {"roxma/nvim-yarp"},
-  {"ncm2/ncm2"},
-  {"ncm2/ncm2-bufword"},
-  {"ncm2/ncm2-path"},
+  -- 补全
+  {
+    'saghen/blink.cmp',
+    event = "VeryLazy",
+    dependencies = { 'rafamadriz/friendly-snippets' },
+    version = '1.*',
+  },
+
   -- 多光标编辑
   { "mg979/vim-visual-multi", branch = "master" },
 
@@ -113,11 +121,26 @@ lazy.setup({
     requires = { "rafamadriz/friendly-snippets" }, --provide some language snippets
     build = "make install_jsregexp", -- use to jump between snippet's filed
   },
-  {"saadparwaiz1/cmp_luasnip"}, -- for autocompletion
 
   -- managing & installing lsp servers, linters & formatters
   {"williamboman/mason.nvim"}, -- in charge of managing lsp servers, linters & formatters
   {"williamboman/mason-lspconfig.nvim"}, -- bridges gap b/w mason & lspconfig
+  -- configuring lsp servers
+  {"neovim/nvim-lspconfig"}, -- easily configure language servers
+  {
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+  },
+  -- enhanced lsp uis
+  {"jose-elias-alvarez/typescript.nvim"}, -- additional functionality for typescript server (e.g. rename file & update imports)
+  {"onsails/lspkind.nvim"}, -- vs-code like icons for autocompletion
+
+  -- formatting & linting
+  { "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } }, -- configure formatters & linters
+  {"jayp0521/mason-null-ls.nvim"}, -- bridges gap b/w mason & null-ls
+  {"stevearc/conform.nvim"},
+  {"mfussenegger/nvim-lint"},
+  {"mhartington/formatter.nvim"},
 
   -- treesitter configuration
   {
@@ -135,29 +158,9 @@ lazy.setup({
       {"kevinhwang91/promise-async", lazy = true},
     },
   },
-  -- configuring lsp servers
-  {"neovim/nvim-lspconfig"}, -- easily configure language servers
-  {"hrsh7th/cmp-nvim-lsp"}, -- for autocompletion
-  {
-    "glepnir/lspsaga.nvim",
-    branch = "main",
-    requires = {
-      -- { "nvim-tree/nvim-web-devicons" },
-      -- { "nvim-treesitter/nvim-treesitter" },
-    },
-  }, -- enhanced lsp uis
-  {"jose-elias-alvarez/typescript.nvim"}, -- additional functionality for typescript server (e.g. rename file & update imports)
-  {"onsails/lspkind.nvim"}, -- vs-code like icons for autocompletion
-
-  -- formatting & linting
-  { "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } }, -- configure formatters & linters
-  {"jayp0521/mason-null-ls.nvim"}, -- bridges gap b/w mason & null-ls
-  {"stevearc/conform.nvim"},
-  {"mfussenegger/nvim-lint"},
-  {"mhartington/formatter.nvim"},
 
   -- auto closing
-  {"windwp/nvim-autopairs"}, -- autoclose parens, brackets, quotes, etc...
+  {"windwp/nvim-autopairs"}, -- autoclose parents, brackets, quotes, etc...
 
   {
     "windwp/nvim-ts-autotag",
@@ -170,6 +173,11 @@ lazy.setup({
 
   -- indent-blankline
   {"lukas-reineke/indent-blankline.nvim"},
+  {
+    'saghen/blink.nvim',
+    -- all modules handle lazy loading internally
+    lazy = false,
+  },
 
   -- lines-moving
   {"fedepujol/move.nvim"},
@@ -247,6 +255,7 @@ lazy.setup({
   },
   {
     'kiddos/gemini.nvim',
+    event = "VeryLazy",
     opts = {}
   },
 })

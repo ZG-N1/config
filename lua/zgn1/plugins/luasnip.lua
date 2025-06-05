@@ -1,6 +1,12 @@
-local luasnip = require("luasnip")
+local status_ok, luasnip = pcall(require, "luasnip")
+if not status_ok then
+    print("LuaSnip not found!")
+end
 --
-local cmp = require("cmp")
+local blink = require("blink.cmp")
+if not status_ok then
+    print("Blink not found!")
+end
 
 -- 扩展snippets用于指定 文件类型
 -- luasnip.filetype_extend("html", { "djangohtml" })
@@ -13,49 +19,6 @@ require("luasnip.loaders.from_vscode").lazy_load({
 	-- exclude = { "html" },
 })
 
-cmp.setup({
-
-	-- ... Your other configuration ...
-
-	mapping = {
-
-		-- ... Your other mappings ...
-		["<CR>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				if luasnip.expandable() then
-					luasnip.expand()
-				else
-					cmp.confirm({
-						select = true,
-					})
-					-- fallback()
-				end
-			else
-				fallback()
-			end
-		end),
-
-		["<Tab>"] = cmp.mapping(function(fallback)
-			if luasnip.locally_jumpable(1) then
-				luasnip.jump(1)
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
-
-		["<S-Tab>"] = cmp.mapping(function(fallback)
-			if luasnip.locally_jumpable(-1) then
-				luasnip.jump(-1)
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
-
-		-- ... Your other mappings ...
-	},
-
-	-- ... Your other configuration ...
-})
 luasnip.config.set_config({
 	region_check_events = "InsertEnter",
 	delete_check_events = "InsertLeave",
